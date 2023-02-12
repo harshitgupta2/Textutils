@@ -19,6 +19,11 @@ export default function TexForm(props) {
     const handelOnChange=(event) =>{ 
         setText(event.target.value);
        }
+       const handelCopy= () =>{
+         var text = document.getElementById("myBox");
+         text.select();
+        navigator.clipboard.writeText(text.value);  
+        }
     
     const [text ,setText]= useState('')
     
@@ -35,11 +40,12 @@ export default function TexForm(props) {
     <div className="container">
     <h1>{props.heading}</h1>
       <div className="mb-3">
-      <textarea className="form-control"id="myBox" value={text} onChange={handelOnChange} rows="8"></textarea>
+      <textarea className="form-control" id="myBox" value={text} onChange={handelOnChange}  rows="8"></textarea>
       </div>
       <button className="btn btn-primary mx-2" onClick={handelUpClick}>Convert to Uppercase </button>
       <button className="btn btn-primary mx-2" onClick={handelLoClick}>Convert to Lowercase </button>
       <button className="btn btn-primary mx-2" onClick={handelClearClick}>Clear</button>
+      <button className="btn btn-primary mx-2" onClick={handelCopy}>Copy text</button>
 
 
     </div>
